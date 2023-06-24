@@ -211,7 +211,7 @@ namespace JSONSerializerLib
                     if (json_str[ind] == 'n') { return Null(ref json_str, ref ind); }
                     else if (json_str[ind] == 't' || json_str[ind] == 'f') { return Bool(ref json_str, ref ind); }
                     else if (json_str[ind] == '"') { return String(ref json_str, ref ind); }
-                    else if (char.IsDigit(json_str[ind])) { return Num(ref json_str, ref ind); }
+                    else if (char.IsDigit(json_str[ind]) || json_str[ind] == '-') { return Num(ref json_str, ref ind); }
                     else if (json_str[ind] == '[') { return Array(ref json_str, ref ind); }
                     else if (json_str[ind] == '{') { return DictOrObj(ref json_str, ref ind); }
                 }
@@ -392,7 +392,7 @@ namespace JSONSerializerLib
                 NumberFormatInfo ti = new();
                 ti.NumberDecimalSeparator = ".";
 
-                if (double.TryParse(str, NumberStyles.Number, ti, out res_num))
+                if (double.TryParse(str, NumberStyles.Float, ti, out res_num))
                 {
                     return res_num;
                 }

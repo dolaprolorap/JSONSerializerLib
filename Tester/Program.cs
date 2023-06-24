@@ -51,9 +51,9 @@ namespace Tester
     {
         static void Main(string[] args)
         {
-            List<TestClass1> l6 = new List<TestClass1> { new TestClass1(0, 0, ""), new TestClass1(120, decimal.MinValue, "  11  11  11  ") };
+            List<TestClass1> l = new List<TestClass1> { new TestClass1(0, 0, ""), new TestClass1(120, decimal.MinValue, "  11  11  11  ") };
 
-            string str = JSONSerializer.Serialize(l6);
+            string str = JSONSerializer.Serialize(l);
 
             Console.WriteLine(str);
         }
